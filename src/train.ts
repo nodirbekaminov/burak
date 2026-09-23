@@ -1,19 +1,31 @@
-// TASK M
+// TASK N
 
-function getSquareNumbers(arr: number[]): { number: number; square: number }[] {
-  const result: { number: number; square: number }[] = [];
-
-  for (let i = 0; i < arr.length; i++) {
-    result.push({
-      number: arr[i],
-      square: arr[i] * arr[i],
-    });
-  }
-
-  return result;
+function palindromCheck(str: string): boolean {
+  const findStr = str.toLocaleLowerCase().replace(/[^a-z0-9]/g, '');
+  return findStr === findStr.split('').reverse().join('');
 }
 
-console.log(getSquareNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9]));
+console.log(palindromCheck('Dad'));
+console.log(palindromCheck('Madam'));
+console.log(palindromCheck('Hello'));
+console.log(palindromCheck('Radar'));
+
+// TASK M
+
+// function getSquareNumbers(arr: number[]): { number: number; square: number }[] {
+//   const result: { number: number; square: number }[] = [];
+
+//   for (let i = 0; i < arr.length; i++) {
+//     result.push({
+//       number: arr[i],
+//       square: arr[i] * arr[i],
+//     });
+//   }
+
+//   return result;
+// }
+
+// console.log(getSquareNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9]));
 
 // Task L
 
