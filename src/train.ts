@@ -1,14 +1,29 @@
-// TASK N
+// TASK O
 
-function palindromCheck(str: string): boolean {
-  const findStr = str.toLocaleLowerCase().replace(/[^a-z0-9]/g, '');
-  return findStr === findStr.split('').reverse().join('');
+function calculateSumOfNumbers(arr: unknown[]): number {
+  let sum: number = 0;
+
+  for (let num of arr) {
+    if (typeof num === "number") {
+      sum += num;
+    }
+  }
+  return sum;
 }
 
-console.log(palindromCheck('Dad'));
-console.log(palindromCheck('Madam'));
-console.log(palindromCheck('Hello'));
-console.log(palindromCheck('Radar'));
+console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]));
+console.log(calculateSumOfNumbers([48, "40", { son: 40 }, true, 15]));
+// TASK N
+
+// function palindromCheck(str: string): boolean {
+//   const findStr = str.toLocaleLowerCase().replace(/[^a-z0-9]/g, '');
+//   return findStr === findStr.split('').reverse().join('');
+// }
+
+// console.log(palindromCheck('Dad'));
+// console.log(palindromCheck('Madam'));
+// console.log(palindromCheck('Hello'));
+// console.log(palindromCheck('Radar'));
 
 // TASK M
 
