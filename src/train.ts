@@ -1,3 +1,15 @@
+/*  Project Standards:
+  -Logging Standards
+  -Naming Standards
+      function, method, variable => CAMEL
+      class => PASCAL
+      folder => KEBAB
+      css => SNAKE
+  -Error handling
+*/
+
+console.log("=============================================");
+
 // TASK O
 
 function calculateSumOfNumbers(arr: unknown[]): number {
@@ -13,6 +25,9 @@ function calculateSumOfNumbers(arr: unknown[]): number {
 
 console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]));
 console.log(calculateSumOfNumbers([48, "40", { son: 40 }, true, 15]));
+
+console.log("=============================================");
+
 // TASK N
 
 // function palindromCheck(str: string): boolean {
