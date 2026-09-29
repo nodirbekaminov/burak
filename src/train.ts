@@ -1,32 +1,55 @@
+console.log("=============================================");
+
+// TASK P
+
+function objectToArray(obj: Record<string, number>): [string, number][] {
+  let result: [string, number][] = [];
+
+  for (let key of Object.keys(obj)) {
+    let value = obj[key];
+    result.push([key, value]);
+  }
+  return result;
+}
+
+console.log(objectToArray({ a: 10, b: 20 }));
+
+console.log("=============================================");
+
 /*  Project Standards:
   -Logging Standards
   -Naming Standards
       function, method, variable => CAMEL
       class => PASCAL
-      folder => KEBAB
+      folder, file => KEBAB
       css => SNAKE
   -Error handling
 */
 
-console.log("=============================================");
+/*
+  Traditibal API
+  Rest API
+  GraphQL API
+  ```````````
+*/
 
 // TASK O
 
-function calculateSumOfNumbers(arr: unknown[]): number {
-  let sum: number = 0;
+// function calculateSumOfNumbers(arr: unknown[]): number {
+//   let sum: number = 0;
 
-  for (let num of arr) {
-    if (typeof num === "number") {
-      sum += num;
-    }
-  }
-  return sum;
-}
+//   for (let num of arr) {
+//     if (typeof num === "number") {
+//       sum += num;
+//     }
+//   }
+//   return sum;
+// }
 
-console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]));
-console.log(calculateSumOfNumbers([48, "40", { son: 40 }, true, 15]));
+// console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]));
+// console.log(calculateSumOfNumbers([48, "40", { son: 40 }, true, 15]));
 
-console.log("=============================================");
+// console.log("=============================================");
 
 // TASK N
 
