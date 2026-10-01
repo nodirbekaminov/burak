@@ -1,37 +1,33 @@
 console.log("=============================================");
 
-// TASK P
+// TAK Q
 
-function objectToArray(obj: Record<string, number>): [string, number][] {
-  let result: [string, number][] = [];
-
-  for (let key of Object.keys(obj)) {
-    let value = obj[key];
-    result.push([key, value]);
+function hasProperty(obj: object, property: string): boolean {
+  if (property in obj) {
+    return true;
+  } else {
+    return false;
   }
-  return result;
 }
 
-console.log(objectToArray({ a: 10, b: 20 }));
+console.log(hasProperty({ name: "BMW" }, "name"));
+console.log(hasProperty({ name: "BMW" }, "age"));
+
+// TASK P
+
+// function objectToArray(obj: Record<string, number>): [string, number][] {
+//   let result: [string, number][] = [];
+
+//   for (let key of Object.keys(obj)) {
+//     let value = obj[key];
+//     result.push([key, value]);
+//   }
+//   return result;
+// }
+
+// console.log(objectToArray({ a: 10, b: 20 }));
 
 console.log("=============================================");
-
-/*  Project Standards:
-  -Logging Standards
-  -Naming Standards
-      function, method, variable => CAMEL
-      class => PASCAL
-      folder, file => KEBAB
-      css => SNAKE
-  -Error handling
-*/
-
-/*
-  Traditibal API
-  Rest API
-  GraphQL API
-  ```````````
-*/
 
 // TASK O
 
