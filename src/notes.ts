@@ -9,8 +9,13 @@
 */
 
 /*
-  Traditibal API
+  Traditional API
   Rest API
   GraphQL API
   ```````````
+*/
+
+/*
+    Traditional FD => BSSR(Admin) => EJS
+    Modern FD      => SPA(User's application)  => React
 */
