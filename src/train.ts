@@ -1,17 +1,43 @@
 console.log("=============================================");
+// TASK R
 
-// TAK Q
+function calculate(input: string): number {
+  const parts = input.split(" ");
 
-function hasProperty(obj: object, property: string): boolean {
-  if (property in obj) {
-    return true;
+  const numberOne = Number(parts[0]);
+  const operator = parts[1];
+  const numberTwo = Number(parts[2]);
+
+  if (operator === "+") {
+    return numberOne + numberTwo;
+  } else if (operator === "-") {
+    return numberOne - numberTwo;
+  } else if (operator === "*") {
+    return numberOne * numberTwo;
+  } else if (operator === "/") {
+    return numberOne / numberTwo;
   } else {
-    return false;
+    throw new Error("Invalid operator");
   }
 }
 
-console.log(hasProperty({ name: "BMW" }, "name"));
-console.log(hasProperty({ name: "BMW" }, "age"));
+console.log(calculate("1 + 3"));
+console.log(calculate("5 - 2"));
+console.log(calculate("4 * 3"));
+console.log(calculate("8 / 2"));
+
+// TASK Q
+
+// function hasProperty(obj: object, property: string): boolean {
+//   if (property in obj) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// console.log(hasProperty({ name: "BMW" }, "name"));
+// console.log(hasProperty({ name: "BMW" }, "age"));
 
 // TASK P
 
