@@ -16,9 +16,9 @@ const store = new MongoDBStore({
 
 /**  1. ENTERANCE **/
 const app = express();
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.static(path.join(__dirname, "public"))); // Public Folder
+app.use(express.urlencoded({ extended: true })); // Traditional API
+app.use(express.json()); // Rest API
 app.use(morgan(MORGAN_FORMAT));
 
 /**  2. SESSIONS **/
@@ -26,17 +26,18 @@ app.use(
   session({
     secret: String(process.env.SESSION_SECRET),
     cookie: {
-      maxAge: 1000 * 3600 * 6, // 1 week
+      maxAge: 1000 * 3600 * 6, // 6 hours
     },
     store: store,
     resave: true, // 10:30 auth = > 13:30
-    saveUninitialized: true,
+    saveUninitialized: false,
   }),
 );
 
 /**  3. VIEWS    **/
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
 /**  4. ROUTERS **/
 // BSSR: EJS
 app.use("/admin", routerAdmin); // BSSR
