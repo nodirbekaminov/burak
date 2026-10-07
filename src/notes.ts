@@ -8,18 +8,25 @@
   -Error handling
 */
 
-/*
+/* Request:
   Traditional API
   Rest API
   GraphQL API
   ```````````
 */
 
-/*
+/* Frontend Development:
     Traditional FD => BSSR(Admin) => EJS
     Modern FD      => SPA(User's application)  => React
 */
 
-/*
-request join
+/* Cookies:
+  request join
+  self destroy
+*/
+
+/* Validation:
+  Frontend Validation
+  Backend Validation
+  Database Validation
 */
