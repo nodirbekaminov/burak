@@ -31,7 +31,7 @@ app.use(
     },
     store: store,
     resave: true, // 10:30 auth = > 13:30
-    saveUninitialized: false,
+    saveUninitialized: true,
   }),
 );
 

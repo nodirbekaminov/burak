@@ -1,30 +1,42 @@
 console.log("=============================================");
-// TASK R
+// TASK S
 
-function calculate(input: string): number {
-  const parts = input.split(" ");
-
-  const numberOne = Number(parts[0]);
-  const operator = parts[1];
-  const numberTwo = Number(parts[2]);
-
-  if (operator === "+") {
-    return numberOne + numberTwo;
-  } else if (operator === "-") {
-    return numberOne - numberTwo;
-  } else if (operator === "*") {
-    return numberOne * numberTwo;
-  } else if (operator === "/") {
-    return numberOne / numberTwo;
-  } else {
-    throw new Error("Invalid operator");
+function missingNumber(nums: number[]) {
+  for (let i = 0; i <= nums.length; i++) {
+    if (!nums.includes(i)) {
+      return i;
+    }
   }
 }
 
-console.log(calculate("1 + 3"));
-console.log(calculate("5 - 2"));
-console.log(calculate("4 * 3"));
-console.log(calculate("8 / 2"));
+console.log(missingNumber([3, 0, 1]));
+
+// TASK R
+
+// function calculate(input: string): number {
+//   const parts = input.split(" ");
+
+//   const numberOne = Number(parts[0]);
+//   const operator = parts[1];
+//   const numberTwo = Number(parts[2]);
+
+//   if (operator === "+") {
+//     return numberOne + numberTwo;
+//   } else if (operator === "-") {
+//     return numberOne - numberTwo;
+//   } else if (operator === "*") {
+//     return numberOne * numberTwo;
+//   } else if (operator === "/") {
+//     return numberOne / numberTwo;
+//   } else {
+//     throw new Error("Invalid operator");
+//   }
+// }
+
+// console.log(calculate("1 + 3"));
+// console.log(calculate("5 - 2"));
+// console.log(calculate("4 * 3"));
+// console.log(calculate("8 / 2"));
 
 // TASK Q
 
