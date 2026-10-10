@@ -9,6 +9,7 @@ import session from "express-session";
 import ConnectMongoDB from "connect-mongodb-session";
 import { T } from "./libs/types/common";
 
+// TCP 2
 const MongoDBStore = ConnectMongoDB(session);
 const store = new MongoDBStore({
   uri: String(process.env.MONGO_URL),
@@ -22,7 +23,7 @@ app.use(express.urlencoded({ extended: true })); // Traditional API
 app.use(express.json()); // Rest API
 app.use(morgan(MORGAN_FORMAT));
 
-/**  2. SESSIONS **/
+/**  2. SESSIONS **/ // Authentication & Authorization => Tamg'a
 app.use(
   session({
     secret: String(process.env.SESSION_SECRET),

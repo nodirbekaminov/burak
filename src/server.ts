@@ -3,6 +3,7 @@ dotenv.config();
 import mongoose from "mongoose";
 import app from "./app";
 
+// TCP 1
 mongoose
   .connect(process.env.MONGO_URL as string, {})
   .then((data) => {
