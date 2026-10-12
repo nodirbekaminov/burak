@@ -1,15 +1,25 @@
 console.log("=============================================");
-// TASK S
+// TASK T
 
-function missingNumber(nums: number[]) {
-  for (let i = 0; i <= nums.length; i++) {
-    if (!nums.includes(i)) {
-      return i;
-    }
-  }
+function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+  const result = arr1.concat(arr2);
+
+  return result.sort((a, b) => a - b);
 }
 
-console.log(missingNumber([3, 0, 1]));
+console.log(mergeSortedArrays([0, 3, 4], [4, 6]));
+
+// TASK S
+
+// function missingNumber(nums: number[]) {
+//   for (let i = 0; i <= nums.length; i++) {
+//     if (!nums.includes(i)) {
+//       return i;
+//     }
+//   }
+// }
+
+// console.log(missingNumber([3, 0, 1]));
 
 // TASK R
 
