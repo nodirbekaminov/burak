@@ -1,10 +1,6 @@
-import { ObjectId } from "mongoose";
+import { ObjectId } from 'mongoose';
 
-import {
-  ProductCollection,
-  ProductSize,
-  ProductStatus,
-} from "../enums/product.enum";
+import { ProductCollection, ProductSize, ProductStatus } from '../enums/product.enum';
 
 export interface Product {
   _id: ObjectId;
@@ -12,7 +8,7 @@ export interface Product {
   productCollection: ProductCollection;
   productName: string;
   productPrice: number;
-  poductLeftCount: number;
+  productLeftCount: number;
   productSize: ProductSize;
   productVolume: number;
   productDesc?: string;
@@ -25,7 +21,7 @@ export interface ProductInput {
   productCollection: ProductCollection;
   productName: string;
   productPrice: number;
-  poductLeftCount: number;
+  productLeftCount: number;
   productSize?: ProductSize;
   productVolume?: number;
   productDesc?: string;
@@ -39,7 +35,7 @@ export interface ProductUpdateInput {
   productCollection?: ProductCollection;
   productName?: string;
   productPrice?: number;
-  poductLeftCount?: number;
+  productLeftCount?: number;
   productSize?: ProductSize;
   productVolume?: number;
   productDesc?: string;
