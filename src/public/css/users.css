@@ -3,20 +3,44 @@
   width: auto;
   height: auto;
   min-width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(-45deg, #110303bf, #e37813, #011c1aba, #968383);
+  background: linear-gradient(-45deg, #110303, #e37813, #011c1a, #5c4e4e);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  padding-bottom: 50px;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .users-container a {
   text-decoration: none;
   color: #000000;
+  transition: all 0.3s ease;
 }
 
 .users-container .nav-item a {
   color: #e3c08d;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.users-container .nav-item a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
 .users-container .nav-item a.disabled {
@@ -24,12 +48,17 @@
 }
 
 .users-container .navigation-menu {
-  position: absolute;
-  z-index: 10000;
-  top: 1%;
+  position: relative;
+  z-index: 1000;
+  margin-top: 25px;
   color: #efefee;
-  font-size: 40px;
+  font-size: 22px;
   font-family: monospace;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 10px 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .users-container .users-frame {
@@ -37,7 +66,6 @@
   padding-bottom: 80px;
   width: 100%;
   height: auto;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,66 +73,110 @@
 
 .users-container .users-frame .board {
   position: relative;
-  margin-top: 100px;
-  width: 1320px;
+  margin-top: 40px;
+  width: 1100px;
+  max-width: 95%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-.users-container .board .dishes-table {
+.users-container .board .dishes-table,
+.users-container .board .user-table {
   position: relative;
   width: 100%;
   height: auto;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.users-container .board .user-table {
-  position: relative;
-  width: 85%;
-  height: auto;
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .users-container .header-name {
-  font-family: "Source Serif Pro";
+  font-family: 'Source Serif Pro', serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 30px;
-  line-height: 25px;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 35px;
   color: #ffffff;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Jadval dizaynini mukammallashtirish */
+.users-container table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.users-container table th {
+  color: #e3c08d;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  border: none !important;
+}
+
+.users-container table tbody tr {
+  background: rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.users-container table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.users-container table td,
+.users-container table th {
+  text-align: center;
+  vertical-align: middle;
+  padding: 14px;
+  color: #f1f1f1;
+  border: none !important;
+}
+
+.users-container table td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.users-container table td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .users-container select:focus {
-  min-width: 90%;
   width: auto;
+  outline: none;
 }
 
 .users-container .spec-select {
   position: relative;
-  padding: 0px 7px;
-  /*width: 100%;*/
-  height: 27px;
-  background: #ffffff;
-  border: 1px solid #dddddd;
+  padding: 0px 10px;
+  height: 32px;
+  background: #1a1a24;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  font-family: "GT Walsheim Pro";
+  font-family: 'GT Walsheim Pro', sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 26px;
-  color: #4f547b;
+  font-weight: 500;
+  font-size: 14px;
+  color: #4cd964;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.users-container table td,
-table th {
-  text-align: center;
-  vertical-align: middle;
+.users-container .spec-select:hover {
+  border-color: #4cd964;
 }
