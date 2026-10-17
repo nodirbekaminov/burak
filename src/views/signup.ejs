@@ -4,7 +4,8 @@
 
   <body>
     <div class="signup-container">
-      <form action="/admin/signup" method="POST" enctype="multipart/form-data">
+      <form onsubmit="return validateSignupForm()" action="/admin/signup" method="POST" enctype="multipart/form-data"
+        autocomplete="off">
         <div class="signup-frame" style="width: 650px">
           <div class="signup-top">
             <span>Signup</span>
@@ -18,11 +19,13 @@
           <div class="sign-input-frame" style="justify-content: space-between">
             <div class="sign-up-frame">
               <label>Restaurant *</label>
-              <input type="text" name="memberNick" class="member-nick" placeholder="Username" value="" required />
+              <input type="text" name="memberNick" class="member-nick" placeholder="Username" value=""
+                autocomplete="off" />
             </div>
             <div class="sign-up-frame">
               <label>Phone *</label>
-              <input type="text" name="memberPhone" class="member-phone" placeholder="Phone" value="" required />
+              <input type="tel" name="memberPhone" class="member-phone" placeholder="Phone" value=""
+                autocomplete="off" />
             </div>
           </div>
 
@@ -30,12 +33,12 @@
             <div class="sign-up-frame">
               <label>Password *</label>
               <input type="password" name="memberPassword" class="member-password" placeholder="Password" value=""
-                required />
+                autocomplete="new-password" />
             </div>
             <div class="sign-up-frame">
               <label>Repeat password *</label>
               <input type="password" name="confirmPassword" class="confirm-password" placeholder="Repeat password"
-                value="" required />
+                value="" autocomplete="new-password" />
             </div>
           </div>
 
@@ -48,7 +51,7 @@
                   <input class="upload-name" value="Choose image" disabled="disabled" />
                   <label for="input-file" class="file-input-label">Upload Image</label>
                   <input type="file" id="input-file" class="upload-hidden form-control-file member-image"
-                    name="memberImage" required />
+                    name="memberImage" accept=".jpg,.jpeg,.png" />
                 </div>
                 <p class="thumbnail-desc">
                   Please upload restaurant image.<br />
