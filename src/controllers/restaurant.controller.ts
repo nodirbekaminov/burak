@@ -112,6 +112,7 @@ restaurantController.updateChosenUser = async (req: Request, res: Response) => {
     else res.status(Errors.standard.code).json(Errors.standard);
   }
 };
+
 restaurantController.checkAuthSession = async (req: AdminRequest, res: Response) => {
   try {
     console.log('checkAuthSession');

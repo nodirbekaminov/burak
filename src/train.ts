@@ -1,13 +1,35 @@
-console.log("=============================================");
-// TASK T
+console.log('=============================================');
+// TASK V
 
-function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
-  const result = arr1.concat(arr2);
+function countChars(chars: string): { [key: string]: number } {
+  let count: { [key: string]: number } = {};
 
-  return result.sort((a, b) => a - b);
+  for (let i = 0; i < chars.length; i++) {
+    const char = chars[i];
+
+    if (char in count) {
+      count[char] += 1;
+    } else {
+      count[char] = 1;
+    }
+  }
+
+  return count;
 }
 
-console.log(mergeSortedArrays([0, 3, 4], [4, 6]));
+console.log(countChars('hello'));
+console.log(countChars('book'));
+console.log(countChars('apple'));
+
+// TASK T
+
+// function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+//   const result = arr1.concat(arr2);
+
+//   return result.sort((a, b) => a - b);
+// }
+
+// console.log(mergeSortedArrays([0, 3, 4], [4, 6]));
 
 // TASK S
 
@@ -75,7 +97,7 @@ console.log(mergeSortedArrays([0, 3, 4], [4, 6]));
 
 // console.log(objectToArray({ a: 10, b: 20 }));
 
-console.log("=============================================");
+console.log('=============================================');
 
 // TASK O
 
