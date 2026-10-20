@@ -1,15 +1,10 @@
-import { error } from "console";
-import { MemberStatus, MemberType } from "../libs/enums/member.enum";
-import Errors, { HttpCode, Message } from "../libs/Error";
-import {
-  LoginInput,
-  Member,
-  MemberInput,
-  MemberUpdateInput,
-} from "../libs/types/member";
-import MemberModel from "../schema/Member.model";
-import * as bcrypt from "bcryptjs";
-import { shapeIntoMongooseObjectId } from "../libs/config";
+import { error } from 'console';
+import { MemberStatus, MemberType } from '../libs/enums/member.enum';
+import Errors, { HttpCode, Message } from '../libs/Error';
+import { LoginInput, Member, MemberInput, MemberUpdateInput } from '../libs/types/member';
+import MemberModel from '../schema/Member.model';
+import * as bcrypt from 'bcryptjs';
+import { shapeIntoMongooseObjectId } from '../libs/config';
 
 class MemberService {
   private readonly memberModel;
@@ -28,10 +23,10 @@ class MemberService {
 
     try {
       const result = await this.memberModel.create(input);
-      result.memberPassword = "";
+      result.memberPassword = '';
       return result.toJSON();
     } catch (err) {
-      console.log("Error, model:signup", err);
+      console.log('Error, model:signup', err);
       throw new Errors(HttpCode.BAD_REQUEST, Message.USED_NICK_PHONE);
     }
   }
@@ -41,23 +36,25 @@ class MemberService {
   public async login(input: LoginInput): Promise<Member> {
     const member = await this.memberModel
       .findOne(
-        { memberNick: input.memberNick, memberStatus: MemberStatus.ACTIVE },
-        { memberNick: 1, memberPassword: 1 },
+        {
+          memberNick: input.memberNick,
+          memberStatus: { $ne: MemberStatus.DELETE },
+        },
+        { memberNick: 1, memberPassword: 1, memberStatus: 1, memberType: 1 }
       )
       .exec();
-
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
+    else if (member.memberStatus === MemberStatus.BLOCK) {
+      throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
+    }
 
-    const isMatch = await bcrypt.compare(
-      input.memberPassword,
-      member.memberPassword,
-    );
+    const isMatch = await bcrypt.compare(input.memberPassword, member.memberPassword);
 
     if (!isMatch) {
       throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
     }
 
-    return await this.memberModel.findOne(member._id).lean().exec();
+    return await this.memberModel.findById(member._id).lean().exec();
   }
 
   /*  SSR */
@@ -67,7 +64,7 @@ class MemberService {
         memberType: MemberType.RESTAURANT,
       })
       .exec();
-    console.log("exist:", exist);
+    console.log('exist:', exist);
     if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
 
     const salt = await bcrypt.genSalt();
@@ -75,7 +72,7 @@ class MemberService {
 
     try {
       const result = await this.memberModel.create(input);
-      result.memberPassword = "";
+      result.memberPassword = '';
       return result;
     } catch (err) {
       throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
@@ -86,16 +83,13 @@ class MemberService {
     const member = await this.memberModel
       .findOne(
         { memberNick: input.memberNick }, // Filter
-        { memberNick: 1, memberPassword: 1 }, // Projection
+        { memberNick: 1, memberPassword: 1 } // Projection
       )
       .exec();
 
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
 
-    const isMatch = await bcrypt.compare(
-      input.memberPassword,
-      member.memberPassword,
-    );
+    const isMatch = await bcrypt.compare(input.memberPassword, member.memberPassword);
     // const isMatch = input.memberPassword === member.memberPassword;
 
     if (!isMatch) {
@@ -106,9 +100,7 @@ class MemberService {
   }
 
   public async getUsers(): Promise<Member[]> {
-    const result = await this.memberModel
-      .find({ memberType: MemberType.USER })
-      .exec();
+    const result = await this.memberModel.find({ memberType: MemberType.USER }).exec();
 
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
