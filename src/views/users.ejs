@@ -56,20 +56,33 @@
                         <th scope="col">Status</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td class="user-name">Nick</td>
-                        <td>998959551017</td>
-                        <td>
-                          <select class="spec-select member-status status-active">
-                            <option value="ACTIVE" selected>ACTIVE</option>
-                            <option value="BLOCK">BLOCK</option>
-                            <option value="DELETE">DELETE</option>
-                          </select>
-                        </td>
-                      </tr>
-                    </tbody>
+                    <!-- LOOP PRODUCT: START -->
+                    <% users.map(function(value, index) {%>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <%= index + 1%>
+                          </td>
+                          <td class="user-name">
+                            <%= value.memberNick%>
+                          </td>
+                          <td>
+                            <%= value.memberPhone%>
+                          </td>
+                          <td>
+                            <select class="spec-select member-status status-active" id="<%= value._id%>">
+                              <option value="ACTIVE" <%=value.memberStatus==="ACTIVE" ? "selected" : "" %>>ACTIVE
+                              </option>
+                              <option value="BLOCK" <%=value.memberStatus==="BLOCK" ? "selected" : "" %>>BLOCK</option>
+                              <option value="DELETE" <%=value.memberStatus==="DELETE" ? "selected" : "" %>>DELETE
+                              </option>
+                            </select>
+                          </td>
+                        </tr>
+                      </tbody>
+
+                      <% }) %>
+                        <!-- LOOP PRODUCT: END -->
                   </table>
                 </div>
 
