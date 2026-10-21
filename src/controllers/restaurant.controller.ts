@@ -70,7 +70,7 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
 
     req.session.member = result;
     req.session.save(function () {
-      res.redirect('/admin/product/all');
+      res.redirect('/admin/user/all');
     });
   } catch (err) {
     console.log('Error, processLogin:', err);
@@ -95,7 +95,6 @@ restaurantController.getUsers = async (req: Request, res: Response) => {
   try {
     console.log('getUsers');
     const result = await memberService.getUsers();
-    console.log('result:', result);
     res.render('users', { users: result });
   } catch (err) {
     console.log('Error, getUsers :', err);
