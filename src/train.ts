@@ -1,25 +1,39 @@
 console.log('=============================================');
-// TASK V
+// TASK W
 
-function countChars(chars: string): { [key: string]: number } {
-  let count: { [key: string]: number } = {};
+function chunkArray(arr: number[], size: number): number[][] {
+  const result: number[][] = [];
 
-  for (let i = 0; i < chars.length; i++) {
-    const char = chars[i];
-
-    if (char in count) {
-      count[char] += 1;
-    } else {
-      count[char] = 1;
-    }
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
   }
 
-  return count;
+  return result;
 }
 
-console.log(countChars('hello'));
-console.log(countChars('book'));
-console.log(countChars('apple'));
+console.log(chunkArray([1, 2, 3, 4, 5], 2));
+
+// TASK V
+
+// function countChars(chars: string): { [key: string]: number } {
+//   let count: { [key: string]: number } = {};
+
+//   for (let i = 0; i < chars.length; i++) {
+//     const char = chars[i];
+
+//     if (char in count) {
+//       count[char] += 1;
+//     } else {
+//       count[char] = 1;
+//     }
+//   }
+
+//   return count;
+// }
+
+// console.log(countChars('hello'));
+// console.log(countChars('book'));
+// console.log(countChars('apple'));
 
 // TASK T
 
