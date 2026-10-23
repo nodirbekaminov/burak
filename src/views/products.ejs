@@ -42,12 +42,12 @@
                   </tr>
                 </thead>
                 <!-- LOOP PRODUCTS: START -->
-                <% products.map(function(value, key) { %>
+                <% products.map(function(value, index) { %>
 
                   <tbody>
                     <tr>
                       <td>
-                        <%= key + 1 %>
+                        <%= index + 1 %>.
                       </td>
                       <td class="product-name-cell">
                         <%= value.productName %>
