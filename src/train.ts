@@ -1,24 +1,33 @@
 console.log('=============================================');
+// TASK Y
 
-// TASK X
-function countOccurrences(obj: any, key: string): number {
-  if (typeof obj !== 'object' || obj === null) {
-    return 0;
-  }
-
-  let count = 0;
-
-  for (const k in obj) {
-    if (k === key) {
-      count++;
-    }
-    count += countOccurrences(obj[k], key);
-  }
-
-  return count;
+function findIntersection<T>(a: T[], b: T[]): T[] {
+  return a.filter((x, i) => b.includes(x) && a.indexOf(x) === i);
 }
 
-console.log(countOccurrences({ model: 'A', s: { model: 'B' } }, 'model'));
+console.log(findIntersection([1, 2, 3], [3, 2, 0]));
+console.log(findIntersection([1, 1, 2], [1, 3]));
+console.log(findIntersection(['a', 'b', 'c', 'd'], ['c']));
+
+// TASK X
+// function countOccurrences(obj: any, key: string): number {
+//   if (typeof obj !== 'object' || obj === null) {
+//     return 0;
+//   }
+
+//   let count = 0;
+
+//   for (const k in obj) {
+//     if (k === key) {
+//       count++;
+//     }
+//     count += countOccurrences(obj[k], key);
+//   }
+
+//   return count;
+// }
+
+// console.log(countOccurrences({ model: 'A', s: { model: 'B' } }, 'model'));
 
 // TASK W
 
