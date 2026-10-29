@@ -1,13 +1,29 @@
 console.log('=============================================');
-// TASK Y
+// TASK Z
 
-function findIntersection<T>(a: T[], b: T[]): T[] {
-  return a.filter((x, i) => b.includes(x) && a.indexOf(x) === i);
+function sumEvens(num: number[]): number[] {
+  let calculate: number[] = [];
+  for (let i = 0; i < num.length; i++) {
+    if (num[i] % 2 === 0) {
+      calculate.push(num[i]);
+    }
+  }
+
+  return calculate;
 }
 
-console.log(findIntersection([1, 2, 3], [3, 2, 0]));
-console.log(findIntersection([1, 1, 2], [1, 3]));
-console.log(findIntersection(['a', 'b', 'c', 'd'], ['c']));
+console.log(sumEvens([1, 2, 3]));
+console.log(sumEvens([1, 2, 3, 6, 10, 24, 33, 45, 20]));
+
+// TASK Y
+
+// function findIntersection<T>(a: T[], b: T[]): T[] {
+//   return a.filter((x, i) => b.includes(x) && a.indexOf(x) === i);
+// }
+
+// console.log(findIntersection([1, 2, 3], [3, 2, 0]));
+// console.log(findIntersection([1, 1, 2], [1, 3]));
+// console.log(findIntersection(['a', 'b', 'c', 'd'], ['c']));
 
 // TASK X
 // function countOccurrences(obj: any, key: string): number {
