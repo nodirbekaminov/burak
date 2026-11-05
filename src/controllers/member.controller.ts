@@ -6,6 +6,7 @@ import {
   LoginInput,
   Member,
   MemberInput,
+  MemberUpdateInput,
 } from '../libs/types/member';
 import { MemberType } from '../libs/enums/member.enum';
 import Errors, { HttpCode, Message } from '../libs/Error';
@@ -86,6 +87,21 @@ memberController.getMemberdDetail = async (
     else res.status(Errors.standard.code).json(Errors.standard);
   }
 };
+
+memberController.updateMember = async (req: ExtendedRequest, res: Response) => {
+  try {
+    console.log('updateMember:');
+    const input: MemberUpdateInput = req.body;
+    if (req.file) input.memberImage = req.file.path.replace(/\\/, '/');
+    const result = await memberService.updateMember(req.member, input);
+    res.status(HttpCode.OK).json(result);
+  } catch (err) {
+    console.log('Error, updateMember:', err);
+    if (err instanceof Errors) res.status(err.code).json(err);
+    else res.status(Errors.standard.code).json(Errors.standard);
+  }
+};
+
 // Middleware
 memberController.verifyAuth = async (
   req: ExtendedRequest,

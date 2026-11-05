@@ -20,6 +20,7 @@ const store = new MongoDBStore({
 /**  1. ENTERANCE **/
 const app = express();
 app.use(express.static(path.join(__dirname, 'public'))); // Public Folder
+app.use('/uploads', express.static('./uploads')); // Uploads Folder
 app.use(express.urlencoded({ extended: true })); // Traditional API
 app.use(express.json()); // Rest API
 app.use(cookieParser());
