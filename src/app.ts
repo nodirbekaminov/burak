@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import path from 'path';
 import router from './router';
@@ -23,6 +24,12 @@ app.use(express.static(path.join(__dirname, 'public'))); // Public Folder
 app.use('/uploads', express.static('./uploads')); // Uploads Folder
 app.use(express.urlencoded({ extended: true })); // Traditional API
 app.use(express.json()); // Rest API
+app.use(
+  cors({
+    credentials: true,
+    origin: true,
+  })
+);
 app.use(cookieParser());
 app.use(morgan(MORGAN_FORMAT));
 
